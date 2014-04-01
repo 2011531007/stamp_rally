@@ -37,7 +37,7 @@ class IslandManager
         }
         return stamp
     end
-    def lawn_mowing     #芝刈りをするためのメソッド#
+    def pruning     #枝切りをするためのメソッド#
         @total_island.times do |i|
             if @map_data[i].size < 2    #隣接島が１または０の島を探す
                 dead_judge = i
@@ -95,7 +95,7 @@ start_time = Time.now
 file_manager = FileManager.new
 total_island,map_data = file_manager.read_island
 island_manager  = IslandManager.new(total_island,map_data)
-island_manager.lawn_mowing
+island_manager.pruning
 now_island = island_manager.start_select
 stamp = island_manager.next_select(now_island)
 file_manager.write_stamp(stamp)
